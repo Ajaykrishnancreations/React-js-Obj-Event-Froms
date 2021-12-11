@@ -1,0 +1,122 @@
+
+This is event handling condition rendering.
+
+This is used with if-and if-else state.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+HomePage.js
+------------------
+import React from 'react';
+import Login from './Login';
+import Logout from './Logout';
+
+class HomePage extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={isLoggedIn:true}
+
+        this.loginFunction=this.loginFunction.bind(this);
+        this.logoutFunction=this.logoutFunction.bind(this);
+       
+    }
+
+
+   loginFunction(){
+       this.setState({isLoggedIn:true});
+   }
+
+   logoutFunction(){
+       this.setState({isLoggedIn:false});
+   }
+
+
+    render(){
+        const isLoggedIn=this.state.isLoggedIn;
+
+
+//--------------------------------------------( Method 2 )------------------------------
+//
+//     if-else method 
+//
+//   	   if(isLoggedIn)
+// 		{
+//  	   		return<Logout onClick={this.logoutFunction}/>
+// 		}
+// 	    else
+// 		{
+//     			return<Login onClick={this.loginFunction}/>
+// 		}
+//
+//
+//------------------------------------------------------------------------------------------------
+
+//----------------------------------------( Method 2 )---------------------------------------------
+// THIS is Ternary opertor
+return(
+<>
+    {isLoggedIn?<Logout onClick={this.logoutFunction}/>:<Login onClick={this.loginFunction}/>}
+</>
+);
+//-------------------------------------------------------------------------------------------
+    }
+}
+
+export default HomePage;
+____________________________________________________________________________________________________________________________________________________________
+
+login.js
+------------
+
+import React from 'react';
+function Login(props){
+    return(
+        <>
+        <h1>pls login</h1>
+        <button onClick={props.onClick}>log-in</button>
+    </>
+    );
+}
+
+export default Login;
+
+_____________________________________________________________________________________________________________________________________________________________
+
+logOut.js
+-----------
+import React from 'react';
+
+function Logout(props){
+    return(
+        <>
+        <h1>Welcome to our App</h1>
+        <button onClick={props.onClick}>log-out</button> 
+        </>
+    );
+}
+
+export default Logout;
+_________________________________________________________________________________________________________________________________________________________________
+
+index.js
+------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import HomePage from './HomePage';
+
+function showtime(){
+  ReactDOM.render(
+  <HomePage/>,
+  document.getElementById('root')
+);
+}
+
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+_______________________________________________________________(-End-)______________________________________________________________________________________________
+

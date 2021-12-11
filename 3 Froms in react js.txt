@@ -1,0 +1,56 @@
+
+------------------------------
+FROMS IN REACT JS
+-------------------------------
+
+______________________________________________________________________________________________________________________________________________________________
+MyFrom.js 
+______________________________________________________________________________________________________________________________________________________________
+
+import React from 'react';
+
+class MyForm extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={name:''}
+    }
+
+    onChangeHandler=(e)=>{
+        this.setState({name:e.target.value})
+    }
+    onSubmitHandler=(e)=>{
+        alert("your give text is "+this.state.name)
+    }
+
+    render(){
+
+        let name1='';
+                if(this.state.name){
+                    name1=<p>Your Enter text value is : {this.state.name}</p>
+                }
+                else{
+                    name1='';
+                }
+
+        return(
+            <>
+
+            <form onSubmit={this.onSubmitHandler}>
+                <h1>Enter a text: </h1>
+                <input type="text" onChange={this.onChangeHandler}/>
+  
+                <p>Your Enter text value is : {this.state.name}</p>
+                {name1}
+                <input type='submit'/>
+            </form>
+
+            </>
+        );
+    }
+
+}
+
+export default MyForm;
+
+_____________________________________________________________________________________________________________________________________________________________

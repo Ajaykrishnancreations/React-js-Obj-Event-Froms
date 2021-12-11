@@ -1,0 +1,139 @@
+Event Handling
+
+
+it is used for button --> onClick{}
+----------------------------------------------------------
+in Html : 
+<button onclick="shoot()">Take the Shot!</button>
+-----------------------------------------------------------
+React:
+<button onClick={shoot}>Take the Shot!</button>
+--------------------------------------------------------------
+
+
+
+________________________________________________________________________________________________
+Basic Example
+---------------
+function Football() {
+  const shoot = () => {
+    alert("Great Shot!");
+  }
+
+  return (
+    <button onClick={shoot}>Take the shot!</button>
+  );
+}
+
+ReactDOM.render(<Football />, document.getElementById('root'));
+
+__________________________________________________________________________________________________
+
+
+
+
+____________________________________________________________________________________________________________________________________________________
+
+Basic button on React js
+--------------------------------
+
+class App extends React.Component{
+  
+  fun1=()=>{
+    var a=Number(document.getElementById("m1").value);
+    var b=Number(document.getElementById("m2").value);
+  
+    //add // var c=a+b;
+
+    var c=a>b?"A value is big to 'B' value " : "B value is big to 'A' value"
+   document.getElementById("res").innerHTML=c;
+  
+  }
+  render() {
+    return (
+      <>
+      <h1>Addition</h1>
+      
+      <input type="number" id="m1"></input>
+      <input type="number" id="m2"></input>
+
+      <input type="button" value="click me" className="but" onClick={this.fun1}></input>
+      <div id="res"></div>
+      </>
+    );
+  }
+}
+
+
+
+export default App;
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+_________________________________________________________________________________________________________________________________________________
+new file ToggleButton.js
+------------------------------
+
+import React from 'react';
+
+class ToggleButton extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={isOn:false}
+//method (1)=>  // this.changeToggle=this.changeToggle.bind(this);
+    }
+ 
+//method (1)=>  //    changeToggle(){
+    changeToggle=()=>{          // <=method(2) dirct method
+        this.setState(state=>({
+            isOn:!state.isOn
+        }))
+    }
+
+    render(){
+        return(
+            <>
+            <button onClick={this.changeToggle}> Toggle :{this.state.isOn?"On":"Off"} </button>
+            </>
+        );
+    }
+
+}
+
+export default ToggleButton;
+________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+______________________________________________________________________________________________________________________________
+Example:
+Arrow Function: Sending the event object manually:
+----------------------------------------------------------
+
+function Football() {
+  const shoot = (a, b) => {
+    alert(b.type);
+    /*
+    'b' represents the React event that triggered the function,
+    in this case the 'click' event
+    */
+  }
+
+  return (
+    <button onClick={(event) => shoot("Goal!", event)}>Take the shot!</button>
+  );
+}
+
+ReactDOM.render(<Football />, document.getElementById('root'));
+ 
+
+______________________________________________________________________________________________________________________
+
+
