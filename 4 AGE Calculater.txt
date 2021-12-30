@@ -1,0 +1,48 @@
+AgeCalculater.js -- (file)
+---------------------------
+
+import React from "react";
+import MyAge from "./MyAge";
+
+class AgeCalculater extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={age:''};
+        this.changHanddler=this.changHanddler.bind(this);
+    }
+
+    changHanddler(e){
+        this.setState({age:e.target.value})
+    }
+
+    render(){
+        const age=this.state.age;
+        return(
+            <fieldset>
+                <legend>Enter your age here : </legend>
+                <input value={age} onChange={this.changHanddler}></input>
+                <MyAge age={parseFloat(age)}/>
+            </fieldset>
+        );
+    }
+}
+
+export default AgeCalculater;
+______________________________________________________________________________________________________________________________________
+--------------------------------------------------------------------------------------------------------------------------------------
+MyAge.js ----(file)
+--------------------
+import React from "react";
+
+function MyAge(props){
+    if(props.age >= 18)
+    {
+        return <p>Your are elgiable to vote</p>;
+    }
+   
+      return  <p>Sorry your not to elgiable because you are under 18 age! </p>
+    
+}
+
+export default MyAge;
+--------------------------------------------------------------------------------------------------------------------------------------------

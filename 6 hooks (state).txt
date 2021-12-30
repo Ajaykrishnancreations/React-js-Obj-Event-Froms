@@ -1,0 +1,53 @@
+----------------------------
+(1) normal class component
+----------------------------
+_____________________________________________________________________________________________________________________________________________
+counter.js
+_____________________________________________________________________________________________________________________________________________
+
+import React from 'react';
+
+class Counter extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state={count:0}
+    }
+
+    render(){
+        return(
+            <>
+            <h1>count time : {this.state.count}</h1>
+            <button onClick={()=>this.setState({count:this.state.count+1})}>click me </button>
+            </>
+        );
+    }
+
+}
+
+export default Counter;
+_____________________________________________________________________________________________________________________________________________
+(2) use hooks method (state)
+------------------------------
+___________
+counter.js
+------------
+
+import React,{useState} from 'react';         <-------- here we will add the {useState} than only the hook will be work
+
+function Counter(props){
+    
+    const [count,SetCount]=useState(0);       <------- this is equal to constructor
+
+    return (
+        <>
+        <h1>count time : {count}</h1>
+        <button onClick={()=>SetCount(count+1)}>click me </button>
+        </>
+    );
+}
+
+
+export default Counter;
+
+_______________________________________________________________________________________________________________________________________________
